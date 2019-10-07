@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+:host{
+  display: flex;
+  justify-content: center;
+}
+.search-view {
+  max-width: 600px;
+  width: 100%;
+  padding: $padding-lg $padding-lg/2 $padding-lg $padding-lg/2 ;
+}
+.fill {
+  width: 100%;
+}

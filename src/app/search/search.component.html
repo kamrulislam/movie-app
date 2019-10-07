@@ -1,1 +1,30 @@
-<p>search works!</p>
+<div class="search-view">
+  <form [formGroup]="searchForm" (ngSubmit)="submit()">
+    <mat-form-field class="fill">
+      <mat-label>Search movie by title</mat-label>
+      <input matInput placeholder="Title" formControlName="search">
+      <button mat-icon-button matSuffix [attr.aria-label]="'Search movie'" [attr.aria-pressed]="searched">
+      <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <div class="result" *ngIf="movies$ | async as movies">
+    <div class="error" *ngIf="error">
+      {{errorMessage}}
+    </div>
+
+    <mat-list>
+      <mat-list-item *ngFor="let movie of movies">
+        <img matListAvatar [src]="movie.Poster" [alt]="movie.title">
+        <h3 matLine> {{movie.Title}} </h3>
+        <p matLine>
+          <span class="major"> {{movie.Year}} </span>
+          <span class="minor"> {{movie.Type}} </span>
+          <span class="mute"> {{movie.imdbID}} </span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+
