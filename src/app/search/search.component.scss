@@ -11,3 +11,20 @@
 .fill {
   width: 100%;
 }
+
+.result {
+  background-color: $dark-mask-xs;
+  border-radius: $box-border-radius;
+}
+
+.floating-right{
+  position: absolute;
+  right: $padding-lg/2;
+  height: 100%;
+  align-items: center;
+  display: flex;
+}
+
+mat-list-item + mat-list-item{
+  border-top: 1px solid $dark-mask-s;
+}

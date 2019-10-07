@@ -31,3 +31,7 @@ $movie-app-theme: mat-light-theme($movie-app-primary, $movie-app-accent, $movie-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import './variables.scss';
+
+.fill-space{
+  flex: 1 1 auto;
+}

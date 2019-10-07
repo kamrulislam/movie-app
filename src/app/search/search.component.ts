@@ -44,4 +44,8 @@ export class SearchComponent implements OnInit {
       })
     );
   }
+
+  add(movie: Movie) {
+    console.log(movie);
+  }
 }

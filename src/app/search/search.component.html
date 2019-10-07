@@ -13,7 +13,7 @@
       {{errorMessage}}
     </div>
 
-    <mat-list>
+    <mat-list *ngIf="!error">
       <mat-list-item *ngFor="let movie of movies">
         <img matListAvatar [src]="movie.Poster" [alt]="movie.title">
         <h3 matLine> {{movie.Title}} </h3>
@@ -22,8 +22,16 @@
           <span class="minor"> {{movie.Type}} </span>
           <span class="mute"> {{movie.imdbID}} </span>
         </p>
+        <div class="floating-right">
+          <button mat-stroked-button color="primary" (click)="add(movie)" >Add</button>
+        </div>
+      </mat-list-item>
+      <mat-list-item *ngIf="movies.length">
+        <span>Prev</span><span class="fill-space"></span><span>Next</span>
       </mat-list-item>
     </mat-list>
+
+
   </div>
 </div>
 
