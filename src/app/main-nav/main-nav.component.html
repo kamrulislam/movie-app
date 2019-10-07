@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav"
+    fixedInViewport
+    [attr.role]="'dialog'"
+    [mode]="'over'"
+    [opened]="false">
+    <mat-toolbar>Movie App</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}"><a routerLink="/" >Search</a></mat-list-item>
+      <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}"> <a routerLink="/watch-list" >Watch List</a> </mat-list-item>
+    </mat-nav-list>
+</mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Movie App</span>
+      <span class="fill-space" ></span>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div *ngIf="!(isHandset$ | async)">
+        <mat-nav-list class="menu-nav">
+          <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"><a routerLink="/" >Search</a></mat-list-item>
+          <mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}"> <a routerLink="/watch-list" >Watch List</a> </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
