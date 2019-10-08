@@ -24,11 +24,27 @@ const addMovie = (state: WatchListState, payload: Movie) => {
       [payload.imdbID]: true
     }
   };
-}
+};
+
+const removeMovie = (state: WatchListState, payload: Movie) => {
+  if (!state.movieIdMap[payload.imdbID]) {
+    return state;
+  }
+
+  return {
+    movies: state.movies.filter(movie => movie.imdbID !== payload.imdbID),
+    movieIdMap: {
+      ...state.movieIdMap,
+      [payload.imdbID]: false
+    }
+  };
+};
+
 
 const watchListReducer = createReducer(
   initialState,
-  on(WatchListActions.addMovie, (state, {payload}) => addMovie(state, payload))
+  on(WatchListActions.addMovie, (state, {payload}) => addMovie(state, payload)),
+  on(WatchListActions.removeMovie, (state, {payload}) => removeMovie(state, payload))
 );
 
 export function reducer(state: WatchListState | undefined, action: Action) {

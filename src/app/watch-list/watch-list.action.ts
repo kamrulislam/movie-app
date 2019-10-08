@@ -15,6 +15,11 @@ export const addMovie = createAction(
   props<{ payload: Movie}>()
 );
 
+export const removeMovie = createAction(
+  '[WatchList] Remove movie',
+  props<{ payload: Movie}>()
+);
+
 
 
 

@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   error = false;
   errorMessage = '';
   movies$: Observable<Array<Movie>>;
+  options = ['ADD'];
 
   constructor(
     private fb: FormBuilder,

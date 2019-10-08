@@ -13,10 +13,11 @@
           <span class="mute"> {{movie.imdbID}} </span>
         </p>
         <div class="floating-right">
-          <button mat-stroked-button color="primary" (click)="add(movie)" >Add</button>
+          <button mat-stroked-button *ngIf="options.indexOf('ADD') !== -1" color="primary" (click)="add(movie)" >Add</button>
+          <button mat-stroked-button *ngIf="options.indexOf('REMOVE') !== -1" color="primary" (click)="remove(movie)" >Remove</button>
         </div>
       </mat-list-item>
-      <mat-list-item *ngIf="movies.length">
+      <mat-list-item *ngIf="movies.length && showPreviousNext">
         <span>Prev</span><span class="fill-space"></span><span>Next</span>
       </mat-list-item>
     </mat-list>

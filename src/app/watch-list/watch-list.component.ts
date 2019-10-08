@@ -12,6 +12,7 @@ import { selectMovies } from './watch-list.reducer';
 export class WatchListComponent implements OnInit {
 
   movieWatchList$: Observable<Array<Movie>>;
+  options = ['REMOVE'];
 
   constructor(private store: Store<any>) { }
 
