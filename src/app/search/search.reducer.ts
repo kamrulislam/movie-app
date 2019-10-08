@@ -1,8 +1,6 @@
 import { SearchResult } from '.';
 import { Action, createReducer, on, createSelector } from '@ngrx/store';
-// import { fetchByTitle } from './search.action';
 import * as SearchActions from './search.action';
-
 
 export interface SearchState {
   searchResult: SearchResult;
@@ -13,16 +11,6 @@ export const initialState: SearchState = {
   searchResult: undefined,
   page: 1
 };
-
-// export function reducer(state = initialState, action: Action): SearchState {
-//   switch (action.type) {
-//     case SearchActions.fetchByTitle.type:
-//       console.log('fetch by title');
-//       break;
-//   }
-
-//   return state;
-// }
 
 const searchdReducer = createReducer(
   initialState,

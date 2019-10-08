@@ -24,9 +24,7 @@ export class MoviesViewComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    console.log(this.options);
   }
-
 
   add(movie: Movie) {
     console.log(movie);
