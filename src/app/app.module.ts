@@ -22,6 +22,9 @@ import { AppComponent } from './app.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { SearchEffects } from './search/search.effect';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { environment } from '../environments/environment';
         strictActionImmutability: true
       }
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([SearchEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

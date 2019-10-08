@@ -34,7 +34,7 @@ export function reducer(state: SearchState | undefined, action: Action) {
   return searchdReducer(state, action);
 }
 
-export const selectFeature = (state: SearchState) => state;
+export const selectFeature = state => state.search;
 
 export const selectSearchResult = createSelector(
   selectFeature,

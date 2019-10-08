@@ -11,4 +11,9 @@ export const fetchByTitleSuccess = createAction(
   props<{ payload: SearchResult}>()
 );
 
+export const fetchByTitleFailed = createAction(
+  '[Search] Fetch by title failed',
+  props<{ payload: any}>()
+);
+
 

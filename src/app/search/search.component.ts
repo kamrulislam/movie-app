@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { SearchServiceService } from './search-service.service';
 import { SearchResult, Movie } from '.';
-import { tap, map } from 'rxjs/internal/operators';
+import { tap, map, filter } from 'rxjs/internal/operators';
+import { Store } from '@ngrx/store';
+import { fetchByTitle } from './search.action';
+import { selectSearchResult } from './search.reducer';
+import { addMovie } from '../watch-list/watch-list.action';
 
 @Component({
   selector: 'app-search',
@@ -20,16 +23,27 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private searchService: SearchServiceService) { }
+    private store: Store<any>) { }
 
   ngOnInit() {
     this.searchForm =  this.fb.group({
       search: ['', Validators.required]
     });
+    this.observerSearchedMovieChanges();
   }
 
   submit() {
-    this.movies$ = this.searchService.fetchMovies(this.searchForm.value.search).pipe(
+    this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search}));
+  }
+
+  add(movie: Movie) {
+    console.log(movie);
+    this.store.dispatch(addMovie({payload: movie}));
+  }
+
+  private observerSearchedMovieChanges() {
+    this.movies$ = this.store.select(selectSearchResult).pipe(
+      filter(searchResult => !!searchResult),
       tap((searchResult: SearchResult) => {
         this.error = searchResult.Response === 'False';
         if (this.error) {
@@ -43,9 +57,6 @@ export class SearchComponent implements OnInit {
         return searchResult.Search;
       })
     );
-  }
 
-  add(movie: Movie) {
-    console.log(movie);
   }
 }
