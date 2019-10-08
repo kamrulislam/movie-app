@@ -27,7 +27,6 @@ export class MoviesViewComponent implements OnInit {
   }
 
   add(movie: Movie) {
-    console.log(movie);
     this.store.dispatch(addMovie({payload: movie}));
   }
 
