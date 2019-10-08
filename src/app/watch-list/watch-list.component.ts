@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/internal/Observable';
+import { Movie } from '../search';
+import { selectMovies } from './watch-list.reducer';
 
 @Component({
   selector: 'app-watch-list',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatchListComponent implements OnInit {
 
-  constructor() { }
+  movieWatchList$: Observable<Array<Movie>>;
+
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.movieWatchList$ = this.store.select(selectMovies);
   }
 
 }

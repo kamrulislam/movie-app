@@ -25,13 +25,15 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { SearchEffects } from './search/search.effect';
+import { MoviesViewComponent } from './movies-view/movies-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     SearchComponent,
-    WatchListComponent
+    WatchListComponent,
+    MoviesViewComponent
   ],
   imports: [
     BrowserModule,

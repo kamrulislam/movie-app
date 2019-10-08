@@ -14,7 +14,6 @@ export const initialState: WatchListState = {
 };
 
 const addMovie = (state: WatchListState, payload: Movie) => {
-  debugger
   if (state.movieIdMap[payload.imdbID]) {
     return state;
   }

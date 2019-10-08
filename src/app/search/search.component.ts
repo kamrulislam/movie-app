@@ -7,7 +7,6 @@ import { tap, map, filter } from 'rxjs/internal/operators';
 import { Store } from '@ngrx/store';
 import { fetchByTitle } from './search.action';
 import { selectSearchResult } from './search.reducer';
-import { addMovie } from '../watch-list/watch-list.action';
 
 @Component({
   selector: 'app-search',
@@ -34,11 +33,6 @@ export class SearchComponent implements OnInit {
 
   submit() {
     this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search}));
-  }
-
-  add(movie: Movie) {
-    console.log(movie);
-    this.store.dispatch(addMovie({payload: movie}));
   }
 
   private observerSearchedMovieChanges() {
