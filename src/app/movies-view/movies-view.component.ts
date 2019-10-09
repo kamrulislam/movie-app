@@ -18,7 +18,7 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
   @Input()
   errorMessage = '';
   @Input()
-  movies$: Observable<Array<Movie>>;
+  movies: Array<Movie>;
   @Input()
   showPreviousNext = false;
   @Input()

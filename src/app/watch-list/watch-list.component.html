@@ -1,7 +1,7 @@
-<div class="watch-list-view">
+<div class="watch-list-view" *ngIf="(movieWatchList$ | async) as movies">
 
   <app-movies-view
-    [movies$]="movieWatchList$"
+    [movies]="movies"
     [options]="options"
   ></app-movies-view>
 </div>

@@ -1,5 +1,5 @@
-<div class="result" *ngIf="movies$ | async as movies">
-    <div class="error" *ngIf="error" >
+<div class="result" *ngIf="movies">
+    <div class="error" *ngIf="error">
       {{errorMessage}}
     </div>
 

@@ -37,11 +37,12 @@ export class SearchComponent implements OnInit {
   }
 
   submit() {
-    this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search, page: 1}));
+    this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search.trim(), page: 1}));
   }
 
   private observerSearchedMovieChanges() {
     this.movies$ = this.store.select(selectSearchResult).pipe(
+      tap(() => this.error = false),
       filter(searchResult => !!searchResult),
       tap((searchResult: SearchResult) => {
         this.error = searchResult.Response === 'False';
