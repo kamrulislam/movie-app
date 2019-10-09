@@ -14,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { SearchComponent } from './search/search.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
@@ -51,6 +52,7 @@ import { MoviesViewComponent } from './movies-view/movies-view.component';
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
+    DragDropModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

@@ -1,10 +1,10 @@
 <div class="result" *ngIf="movies$ | async as movies">
-    <div class="error" *ngIf="error">
+    <div class="error" *ngIf="error" >
       {{errorMessage}}
     </div>
 
-    <mat-list *ngIf="!error">
-      <mat-list-item *ngFor="let movie of movies">
+    <mat-list *ngIf="!error" (cdkDropListDropped)="drop($event)">
+      <mat-list-item *ngFor="let movie of movies" cdkDrag>
 
         <img matListAvatar *ngIf="movie.Poster !== 'N/A'" [src]="movie.Poster" [alt]="movie.title">
         <img matListAvatar *ngIf="movie.Poster === 'N/A'" [src]="defaultImage" [alt]="movie.title">

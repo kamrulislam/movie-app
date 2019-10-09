@@ -67,4 +67,8 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
     this.pageSubscription$$.unsubscribe();
   }
 
+  drop($event) {
+    console.log($event);
+  }
+
 }
