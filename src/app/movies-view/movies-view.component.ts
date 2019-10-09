@@ -71,13 +71,16 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
     console.log($event);
     const low = Math.min($event.currentIndex, $event.previousIndex);
     const high = Math.max($event.currentIndex, $event.previousIndex);
-    this.movies = [
-      ...this.movies.slice(0, low), 
-      this.movies[high], 
-      ...this.movies.slice(low + 1, high), 
-      this.movies[low], 
-      ...this.movies.slice(high + 1)
-    ];
+    if (low !== high) {
+      this.movies = [
+        ...this.movies.slice(0, low), 
+        this.movies[high], 
+        ...this.movies.slice(low + 1, high), 
+        this.movies[low], 
+        ...this.movies.slice(high + 1)
+      ];
+  
+    }
   }
 
 }
