@@ -3,7 +3,7 @@
       {{errorMessage}}
     </div>
 
-    <mat-list *ngIf="!error" (cdkDropListDropped)="drop($event)">
+    <mat-list *ngIf="!error" cdkDropList (cdkDropListDropped)="drop($event)">
       <mat-list-item *ngFor="let movie of movies" cdkDrag>
 
         <img matListAvatar *ngIf="movie.Poster !== 'N/A'" [src]="movie.Poster" [alt]="movie.title">
