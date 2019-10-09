@@ -8,13 +8,20 @@
       </button>
     </mat-form-field>
   </form>
-  <app-movies-view
-    [error]="error"
-    [errorMessage]="errorMessage"
-    [movies$]="movies$"
-    [showPreviousNext]="true"
-    [options]="options"
-  ></app-movies-view>
+  <ng-container *ngIf="(viewStatus$ | async) as viewStatus">
+    <div *ngIf="viewStatus === ViewStatus.Loading">
+      loading...
+    </div>
+    <app-movies-view
+      *ngIf="viewStatus === ViewStatus.Loaded"
+      [error]="error"
+      [errorMessage]="errorMessage"
+      [movies$]="movies$"
+      [showPreviousNext]="true"
+      [options]="options"
+    ></app-movies-view>
+
+  </ng-container>
 </div>
 
 

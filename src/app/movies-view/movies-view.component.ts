@@ -30,6 +30,8 @@ export class MoviesViewComponent implements OnInit, OnDestroy {
   searchText: string;
   searchTextSubscription$$: Subscription;
 
+  defaultImage = 'assets/default-image.svg';
+
   constructor(private store: Store<any>) { }
 
   ngOnInit() {

@@ -13,4 +13,6 @@ export interface SearchResult {
   Error?: string;
   Search?: Array<Movie>;
   totalResults?: number;
+  searchText?: string;
+  page?: number;
 }

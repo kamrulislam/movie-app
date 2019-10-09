@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { SearchService } from './search.service';
 import { fetchByTitle, fetchByTitleSuccess, fetchByTitleFailed } from './search.action';
 
@@ -12,9 +12,9 @@ export class SearchEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchByTitle.type),
-      mergeMap(({payload, page}) => this.searchService.fetchMovies(payload, page)
+      switchMap(({payload, page}) => this.searchService.fetchMovies(payload, page)
         .pipe(
-          map(searchResult => (fetchByTitleSuccess({payload: searchResult}))),
+          map(searchResult => (fetchByTitleSuccess({payload: {...searchResult, searchText: payload, page}}))),
           catchError((error) => of(fetchByTitleFailed({payload: error})))
         )
       )

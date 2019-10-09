@@ -5,7 +5,9 @@
 
     <mat-list *ngIf="!error">
       <mat-list-item *ngFor="let movie of movies">
-        <img matListAvatar [src]="movie.Poster" [alt]="movie.title">
+
+        <img matListAvatar *ngIf="movie.Poster !== 'N/A'" [src]="movie.Poster" [alt]="movie.title">
+        <img matListAvatar *ngIf="movie.Poster === 'N/A'" [src]="defaultImage" [alt]="movie.title">
         <h3 matLine> {{movie.Title}} </h3>
         <p matLine>
           <span class="major"> {{movie.Year}} </span>

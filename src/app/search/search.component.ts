@@ -6,7 +6,8 @@ import { SearchResult, Movie } from '.';
 import { tap, map, filter } from 'rxjs/internal/operators';
 import { Store } from '@ngrx/store';
 import { fetchByTitle } from './search.action';
-import { selectSearchResult } from './search.reducer';
+import { selectSearchResult, selectViewStatus } from './search.reducer';
+import { ViewStatus } from './enum';
 
 @Component({
   selector: 'app-search',
@@ -18,6 +19,8 @@ export class SearchComponent implements OnInit {
   searched = false;
   error = false;
   errorMessage = '';
+  ViewStatus = ViewStatus;
+  viewStatus$: Observable<ViewStatus>;
   movies$: Observable<Array<Movie>>;
   options = ['ADD'];
 
@@ -30,6 +33,7 @@ export class SearchComponent implements OnInit {
       search: ['', Validators.required]
     });
     this.observerSearchedMovieChanges();
+    this.viewStatus$ = this.store.select(selectViewStatus);
   }
 
   submit() {
@@ -49,6 +53,7 @@ export class SearchComponent implements OnInit {
         if (searchResult.Response === 'False') {
           return [];
         }
+        this.searchForm.patchValue({search: searchResult.searchText});
         return searchResult.Search;
       })
     );
