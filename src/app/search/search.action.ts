@@ -3,7 +3,7 @@ import { SearchResult } from '.';
 
 export const fetchByTitle = createAction(
   '[Search] Fetch by title',
-  props<{ payload: string; }>()
+  props<{ payload: string; page: number; }>()
 );
 
 export const fetchByTitleSuccess = createAction(
@@ -15,5 +15,6 @@ export const fetchByTitleFailed = createAction(
   '[Search] Fetch by title failed',
   props<{ payload: any}>()
 );
+
 
 

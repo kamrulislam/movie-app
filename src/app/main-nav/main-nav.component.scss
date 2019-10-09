@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .sidenav-container {
   height: 100%;
 }
@@ -16,7 +18,12 @@
   z-index: 1;
 }
 
-
+.label{
+  font-size: 0.8em;
+  background-color: $success;
+  border-radius: $box-border-radius * 2;
+  padding:$padding-xs;
+}
 
 .menu-nav{
   display: flex;

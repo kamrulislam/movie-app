@@ -12,7 +12,7 @@ export class SearchEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fetchByTitle.type),
-      mergeMap(({payload}) => this.searchService.fetchMovies(payload)
+      mergeMap(({payload, page}) => this.searchService.fetchMovies(payload, page)
         .pipe(
           map(searchResult => (fetchByTitleSuccess({payload: searchResult}))),
           catchError((error) => of(fetchByTitleFailed({payload: error})))

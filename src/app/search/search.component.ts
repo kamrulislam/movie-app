@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
   }
 
   submit() {
-    this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search}));
+    this.store.dispatch(fetchByTitle({payload: this.searchForm.value.search, page: 1}));
   }
 
   private observerSearchedMovieChanges() {
