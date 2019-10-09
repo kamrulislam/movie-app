@@ -12,14 +12,17 @@
     <div *ngIf="viewStatus === ViewStatus.Loading">
       loading...
     </div>
-    <app-movies-view
-      *ngIf="viewStatus === ViewStatus.Loaded"
-      [error]="error"
-      [errorMessage]="errorMessage"
-      [movies$]="movies$"
-      [showPreviousNext]="true"
-      [options]="options"
-    ></app-movies-view>
+    <ng-container *ngIf="(movies$ | async) as movies">
+      <app-movies-view
+        *ngIf="viewStatus === ViewStatus.Loaded"
+        [error]="error"
+        [errorMessage]="errorMessage"
+        [movies]="movies"
+        [showPreviousNext]="true"
+        [options]="options"
+      ></app-movies-view>
+    </ng-container>
+    
 
   </ng-container>
 </div>
