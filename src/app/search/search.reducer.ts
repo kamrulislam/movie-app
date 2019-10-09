@@ -22,7 +22,7 @@ export const initialState: SearchState = {
 const searchdReducer = createReducer(
   initialState,
   on(SearchActions.fetchByTitle,
-    (state, {payload, page}) => ({ ...state, searchText: payload, page, viewStatus: ViewStatus.Loading})),
+    (state, {payload, page}) => ({ ...initialState, searchText: payload, page, viewStatus: ViewStatus.Loading})),
   on(SearchActions.fetchByTitleSuccess,
     (state, {payload}) => ({ ...state, searchResult: payload, viewStatus: ViewStatus.Loaded })),
   on(SearchActions.fetchByTitleFailed,
